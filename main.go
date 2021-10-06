@@ -1,13 +1,11 @@
 package main
 
 import (
-  _ "embed"
-  "github.com/wailsapp/wails"
-)
+	_ "embed"
+	"utils/pkg/app"
 
-func basic() string {
-  return "Hello World!"
-}
+	"github.com/wailsapp/wails"
+)
 
 //go:embed frontend/dist/app.js
 var js string
@@ -16,7 +14,8 @@ var js string
 var css string
 
 func main() {
-
+  stats:=&app.MyStruct{}
+  
   app := wails.CreateApp(&wails.AppConfig{
     Width:  1024,
     Height: 768,
@@ -25,6 +24,6 @@ func main() {
     CSS:    css,
     Colour: "#131313",
   })
-  app.Bind(basic)
+  app.Bind(stats)
   app.Run()
 }
