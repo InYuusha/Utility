@@ -3,6 +3,7 @@ package main
 import (
 	_ "embed"
 	"utils/pkg/app"
+	"utils/pkg/docker"
 	"utils/pkg/host"
 
 	"github.com/wailsapp/wails"
@@ -27,5 +28,6 @@ func main() {
 	})
 	app.Bind(stats)
 	app.Bind(host.GetHost)
+	app.Bind(docker.GetDocker)
 	app.Run()
 }

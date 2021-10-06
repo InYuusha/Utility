@@ -1,7 +1,34 @@
 <template>
   
     <!--Percentage-->
-  <div class="bg-blue-900  shadow-md  mx-auto p-7 h-5/6"></div>
+  <div class="bg-blue-900  shadow-md  mx-auto p-7 h-5/6">
+    <div class="bg-gray-800 overflow-auto w-full h-full p-8 text-gray-400">
+      <button class="bg-gray-700">All</button>
+      <button class="bg-gray-700">Active</button>
+      <h3 class="text-center my-4 text-xl font-extrabold">Container Info</h3>
+      <table class="table-auto w-full">
+        <thead>
+          <tr class="w-full px-4 bg-gray-700 rounded-md">
+            <th class="text-center">containerID</th>
+            <th>name</th>
+            <th>image</th>
+            <th>status</th>
+            <th>running</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(cont,key) in containers" :key="key">
+              <td>{{cont.containerID}}</td>
+              <td>{{cont.name}}</td>
+              <td>{{cont.image}}</td>
+              <td>{{cont.status}}</td>
+              <td>{{cont.running}}</td>
+            </tr>
+        </tbody>
+        
+      </table>
+    </div> 
+  </div>
       
 
  
@@ -15,14 +42,25 @@ export default {
   name: 'Home',
 
   data:()=>({
-   
- 
+    containers:[]
   }),
   methods:{
 
-  }
+  },
+  mounted() {
+    window.backend.GetDocker()
+    .then(list=>{
+      this.containers = list
+    })
+  },
 }
 </script>
-<style>
 
+<style>
+table td{
+  @apply mx-5 text-center;
+};
+table tr{
+  @apply px-4;
+}
 </style>
