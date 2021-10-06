@@ -41,7 +41,7 @@ export default{
   },
     data:()=>({
         icon:{
-          size:'150px',
+          size:'80px',
           color:'#4680fa'
         }
     }),

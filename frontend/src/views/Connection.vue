@@ -1,7 +1,7 @@
 <template>
   
     <!--Percentage-->
-  <div class="bg-blue-900  shadow-md  mx-auto p-7 h-4/6">
+  <div class="bg-blue-900  shadow-md  mx-auto p-7 h-5/6">
 
   </div>
       
