@@ -14,20 +14,20 @@ type MyStruct struct {
 
 func (m *MyStruct) WailsInit(runtime *wails.Runtime) error {
 
-	c:=&cpu.Info{} //cpu Info obj
-	
+	c := &cpu.Info{}      //cpu Info obj
+	s := &memory.Memory{} //cpu Info obj
+
 	go func() {
 		for {
-			time.Sleep(time.Second*2)
-			runtime.Events.Emit("memory", memory.GetPerc())
+			time.Sleep(time.Second * 2)
+			runtime.Events.Emit("memory", s.GetPerc())
 		}
 	}()
-	go func(){
-		for{
-			time.Sleep(time.Second*2)
-			runtime.Events.Emit("cpu",c.GetCPU())
+	go func() {
+		for {
+			time.Sleep(time.Second * 2)
+			runtime.Events.Emit("cpu", c.GetCPU())
 		}
 	}()
 	return nil
 }
-

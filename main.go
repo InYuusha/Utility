@@ -6,6 +6,7 @@ import (
 	"utils/pkg/cpu"
 	"utils/pkg/docker"
 	"utils/pkg/host"
+	"utils/pkg/memory"
 
 	"github.com/wailsapp/wails"
 )
@@ -28,8 +29,9 @@ func main() {
 		Colour: "#131313",
 	})
 	app.Bind(stats)
-	app.Bind(cpu.CPU())
-	app.Bind(host.GetHost)
-	app.Bind(docker.NewDocker())
+	app.Bind(cpu.CPU()) //bind cpu struct
+	app.Bind(host.GetHost) //bind get host func
+	app.Bind(docker.NewDocker()) //bind docker struct
+	app.Bind(memory.GetMemory()) //bind docker struct
 	app.Run()
 }
