@@ -1,8 +1,8 @@
 <template>
   
     <!--Percentage-->
-  <div class="bg-blue-900  shadow-md  mx-auto p-7 h-5/6">
-    <div class="bg-gray-800 overflow-auto full p-8 text-gray-400">
+  <div class="bg-blue-1000  shadow-md  mx-auto p-7 h-5/6">
+    <div class="bg-gray-1000 overflow-auto full p-8 text-gray-400">
       <h3 class="text-center my-4 text-xl font-extrabold">Host Info</h3>
       <span v-for="(item,key) in info" :key="key" class="grid grid-cols-2 gap-10 text-lg ">
         <p>{{item.K}}</p>

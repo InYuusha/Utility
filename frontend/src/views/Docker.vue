@@ -1,8 +1,8 @@
 <template>
   
     <!--Percentage-->
-  <div class="bg-blue-900  shadow-md  mx-auto p-7 h-5/6">
-    <div class="bg-gray-800 overflow-auto w-full h-full p-8 text-gray-400">
+  <div class="bg-blue-1000  shadow-md  mx-auto p-7 h-5/6">
+    <div class="bg-gray-1000 overflow-auto w-full h-full p-8 text-gray-400">
       
       <button @click="allContainers()">
         <UilSync size="40px"></UilSync>
@@ -11,7 +11,7 @@
       <h3 class="text-center mb-4 text-xl font-extrabold">Container Info</h3>
       <table class="table-auto w-full">
         <thead>
-          <tr class="w-full px-4 bg-gray-700 rounded-md" >
+          <tr class="w-full px-4 bg-gray-700" >
             <th class="text-center">containerID</th>
             <th>name</th>
             <th>image</th>

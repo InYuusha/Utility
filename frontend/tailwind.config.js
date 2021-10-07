@@ -5,6 +5,17 @@ module.exports = {
   presets: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
+
+    extend: {
+      colors: {
+        blue: {
+          1000: '#0c123d'
+        },
+        gray:{
+          1000:'#112642'
+        }
+      }
+    },
     screens: {
       sm: '640px',
       md: '768px',
@@ -15,6 +26,7 @@ module.exports = {
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
+     
 
       black: colors.black,
       white: colors.white,

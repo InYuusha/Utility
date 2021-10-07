@@ -75,3 +75,11 @@ func (t *Info) KillP(p int32) {
 	}
 	log.Println("Pid does not exists")
 }
+
+func(t*Info)GetCpuDetails() []cpu.InfoStat{
+	info, err := cpu.Info()
+	if err != nil {
+		log.Printf("%v", err)
+	}
+	return info
+}
