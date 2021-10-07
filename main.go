@@ -3,6 +3,7 @@ package main
 import (
 	_ "embed"
 	"utils/pkg/app"
+	"utils/pkg/cpu"
 	"utils/pkg/docker"
 	"utils/pkg/host"
 
@@ -17,7 +18,7 @@ var css string
 
 func main() {
 	stats := &app.MyStruct{}
-
+	
 	app := wails.CreateApp(&wails.AppConfig{
 		Width:  1024,
 		Height: 768,
@@ -27,7 +28,8 @@ func main() {
 		Colour: "#131313",
 	})
 	app.Bind(stats)
+	app.Bind(cpu.CPU())
 	app.Bind(host.GetHost)
-	app.Bind(docker.GetDocker)
+	app.Bind(docker.NewDocker())
 	app.Run()
 }

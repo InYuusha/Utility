@@ -13,6 +13,9 @@ type MyStruct struct {
 }
 
 func (m *MyStruct) WailsInit(runtime *wails.Runtime) error {
+
+	c:=&cpu.Info{} //cpu Info obj
+	
 	go func() {
 		for {
 			time.Sleep(time.Second*2)
@@ -22,7 +25,7 @@ func (m *MyStruct) WailsInit(runtime *wails.Runtime) error {
 	go func(){
 		for{
 			time.Sleep(time.Second*2)
-			runtime.Events.Emit("cpu",cpu.GetCPU())
+			runtime.Events.Emit("cpu",c.GetCPU())
 		}
 	}()
 	return nil
