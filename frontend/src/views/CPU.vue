@@ -23,6 +23,9 @@
               <td>{{p.Cpu}}%</td>
               <td>{{p.Exe}}</td>
               <td>{{p.Background}}</td>
+              <td>
+                <button class="bg-gray-500" @click="killP(p.Pid.pid)">Stop x</button>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -44,11 +47,19 @@ export default {
     processList:[]
   }),
   methods:{
-
+    killP(p){
+      window.backend.Info.KillP(p).then(()=>{
+        this.getProcesses()
+      })
+    },
+    getProcesses(){
+      window.backend.Info.GetProcesses()
+      .then(list=>this.processList = list)
+    }
   },
   mounted() {
-    window.backend.Info.GetProcesses()
-    .then(list=>this.processList = list)
+
+    this.getProcesses()
 
     Wails.Events.On("cpu",(per)=>{
       this.sections=[{value:per,color:'orange',label:'CPU Usage'}]

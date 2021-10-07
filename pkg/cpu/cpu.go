@@ -11,17 +11,16 @@ import (
 )
 
 type Info struct {
-	Pid        *process.Process 
-	Cpu        float64 
-	Exe        string	
-	Background bool 
+	Pid        *process.Process
+	Cpu        float64
+	Exe        string
+	Background bool
 }
 
 //binding func
-func CPU()*Info{
+func CPU() *Info {
 	return &Info{}
 }
-
 
 //cpu usage
 func (t *Info) GetCPU() int {
@@ -59,4 +58,20 @@ func (t *Info) GetProcesses() []Info {
 
 	}
 	return stats
+}
+
+func (t *Info) KillP(p int32) {
+	pids, err := process.Processes()
+	if err != nil {
+		log.Println(err)
+	}
+	for _, pid := range pids {
+		if pid.Pid == p {
+			err := pid.Kill()
+			if err != nil {
+				log.Printf("Cannot Kill %v", err)
+			}
+		}
+	}
+	log.Println("Pid does not exists")
 }
