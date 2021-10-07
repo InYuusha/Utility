@@ -1,7 +1,7 @@
 <template>
   
     <!--Percentage-->
-  <div class="bg-blue-1000  shadow-md  mx-auto p-7 h-5/6">
+  <div>
     <div class="bg-gray-1000 overflow-auto w-full h-full p-8 text-gray-400">
       
       <button @click="allContainers()">

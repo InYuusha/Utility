@@ -1,7 +1,7 @@
 <template>
   
     
-    <div class="bg-blue-1000  shadow-md   p-7 h-5/6 ">
+    <div >
 
        <div class="flex flex-row h-2/6 mb-6">
          <!--Cpu Details-->
