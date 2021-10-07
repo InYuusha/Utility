@@ -44,7 +44,7 @@ func (t *Info) GetProcesses() []Info {
 		if err != nil {
 			log.Println(err)
 		}
-		perc = math.Floor(perc*100) / 100
+		perc = math.Floor(perc*1000) / 1000
 		background, err := p.Background()
 		if err != nil {
 			log.Println(err)
