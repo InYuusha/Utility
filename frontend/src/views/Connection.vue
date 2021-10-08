@@ -2,8 +2,8 @@
   
     <!--Percentage-->
   <div >
-    <div class="bg-gray-1000 w-ful h-full p-8 text-gray-400 overflow-auto">
-      <t-dropdown :text="protocol" class="mb-8">
+    <div class="bg-gray-1000 w-full h-full p-8 text-gray-400 overflow-auto ">
+      <t-dropdown :text="protocol" class="mb-8 bg-gray-700 w-16 rounded-lg shadow-2xl absolute">
         <div class="py-1 rounded-md shadow-xs">
           <a
             v-for="(p,key) in protocols" :key="key"
@@ -17,7 +17,7 @@
         
         </div>
       </t-dropdown>
-       <h3 class="text-center mb-6 text-xl font-extrabold">tcp connections</h3>
+       <h3 class="text-center mb-6 text-xl font-extrabold">{{protocol}} connections</h3>
       <table class="table-auto w-5/6">
         <thead>
           <tr>
