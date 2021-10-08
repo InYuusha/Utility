@@ -2,19 +2,23 @@ package memory
 
 import (
 	"log"
+	"math"
 
 	"github.com/shirou/gopsutil/disk"
 	"github.com/shirou/gopsutil/mem"
 )
-type Memory struct{
 
+type Memory struct {
+	Path        string
+	UsedPercent float64
+	Total       uint64
 }
 
-func GetMemory ()*Memory{
+func GetMemory() *Memory {
 	return &Memory{}
 }
 
-func(m*Memory) GetPerc() int {
+func (m *Memory) GetPerc() int {
 	memory, err := mem.VirtualMemory()
 	if err != nil {
 		log.Printf("%v", err)
@@ -25,8 +29,8 @@ func(m*Memory) GetPerc() int {
 
 }
 
-func(m*Memory) GetDisks() []*disk.UsageStat {
-	var list []*disk.UsageStat
+func (m *Memory) GetDisks() []Memory {
+	var list []Memory
 
 	tmp, err := disk.Partitions(false)
 	if err != nil {
@@ -34,7 +38,10 @@ func(m*Memory) GetDisks() []*disk.UsageStat {
 	}
 	for _, d := range tmp {
 		u, _ := disk.Usage(d.Mountpoint)
-		list = append(list, u)
+		perc := math.Floor(u.UsedPercent*10) / 10
+
+		disk := Memory{Path: u.Path, UsedPercent: perc, Total: u.Total}
+		list = append(list, disk)
 	}
 	return list
 
