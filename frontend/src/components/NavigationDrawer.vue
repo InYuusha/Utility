@@ -2,7 +2,7 @@
     
    <div class=" bg-blue-900 p-4 flex justify-between px-10" >
       <router-link to="/" :class="$route.path=='/'?'active':null">
-        <UilProcessor :color="icon.color" :size="icon.size" class="logo"></UilProcessor>
+        <UilProcessor :color="icon.color" :size="icon.size" class="logo "></UilProcessor>
       </router-link>
 
       <router-link to="/host" :class="$route.name=='Host'?'active':null">

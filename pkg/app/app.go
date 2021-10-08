@@ -19,13 +19,13 @@ func (m *MyStruct) WailsInit(runtime *wails.Runtime) error {
 
 	go func() {
 		for {
-			time.Sleep(time.Second * 2)
+			time.Sleep(time.Second )
 			runtime.Events.Emit("memory", s.GetPerc())
 		}
 	}()
 	go func() {
 		for {
-			time.Sleep(time.Second * 2)
+			time.Sleep(time.Second )
 			runtime.Events.Emit("cpu", c.GetCPU())
 		}
 	}()

@@ -24,7 +24,7 @@
 
        </div>
        <!--Processes-->
-       <div class="overflow-auto h-4/6">
+       <div class="overflow-auto h-4/6 backdrop-blur-lg">
           <div class="bg-gray-1000  full p-8 text-gray-400 mt-4 overflow-auto">
          <button class="bg-blue-900 p-3 rounded-lg float-right " @click="getProcesses()"><UilSync size="30px" /></button>
         <h3 class="text-center my-4 text-xl font-extrabold">Running Processes</h3>

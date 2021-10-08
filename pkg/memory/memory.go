@@ -18,14 +18,13 @@ func GetMemory() *Memory {
 	return &Memory{}
 }
 
-func (m *Memory) GetPerc() int {
+func (m *Memory) GetPerc() Memory {
 	memory, err := mem.VirtualMemory()
 	if err != nil {
 		log.Printf("%v", err)
 	}
-	perc := memory.UsedPercent
-
-	return int(perc)
+	perc := math.Floor(memory.UsedPercent*10) / 10
+	return Memory{Path:"",Total: memory.Total,UsedPercent: perc}
 
 }
 
