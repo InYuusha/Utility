@@ -25,6 +25,7 @@ func main() {
 		Width:  1024,
 		Height: 768,
 		Title:  "utils",
+		Resizable: true,
 		JS:     js,
 		CSS:    css,
 		Colour: "#131313",
