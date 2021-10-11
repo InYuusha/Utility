@@ -29,8 +29,8 @@ type Operation  struct{
 	Msg string
 	Status int32
 }
-func(c*Connection) killPort(port int32)Operation{
-
+func(c*Connection) killPort(port int)Operation{
+	
 	var cmd *exec.Cmd
 
 	if runtime.GOOS == "windows" {

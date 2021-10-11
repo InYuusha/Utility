@@ -2,9 +2,15 @@
   
   
   <div >
+    <!-- Message -->
     <span v-if="msg" class="bg-purple-300 absolute top-11 p-4 flex flex-row text-gray-800 rounded-3xl w-60">
       {{status}}
       <button class="mx-2" @click="closeMsg()"><UilTimesCircle size="17px" /></button>
+    </span>
+    <!--Kill port -->
+     <span class="absolute top-14 right-14 w-32">
+      <input class="rounded-lg w-1/2 p-2" v-model="port" type="number">
+      <button @click="killConn()" class="rounded-lg w-1/2 text-gray-300 p-2 bg-blue-600">kill</button>
     </span>
      <!--Dropdown-->
     <div class="bg-gray-1000 w-full h-full p-8 text-gray-400 overflow-auto ">
@@ -36,9 +42,6 @@
               <p v-if="attr!='localaddr'&& attr!='remoteaddr'">{{conn[attr]}}</p>
               <p v-else>{{conn[attr].ip}}:{{conn[attr].port}}</p>
             </td>
-            <td>
-              <button class="bg-gray-700 px-2 mr-4 py-1 rounded-lg" @click="killConn(conn.localaddr.port)"><UilTimesCircle size="20px"/></button>
-            </td>
           </tr>
       
         </tbody>
@@ -63,7 +66,8 @@ export default {
     protocol:"tcp",
     protocols:['all','tcp','udp','inet'],
     msg:false,
-    status:""
+    status:"",
+    port:3000
   }),
   methods:{
     getConn(kind="all"){
@@ -73,8 +77,8 @@ export default {
         this.protocol=kind
         })
     },
-    killConn(port){
-      window.backend.Connection.killPort(port)
+    killConn(){
+      window.backend.Connection.killPort(this.port)
       .then(res=>{
         if(res.Status==200)
           this.getConn()
