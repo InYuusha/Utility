@@ -37,7 +37,7 @@ func(c*Connection) killPort(port int)Operation{
 		command := fmt.Sprintf("(Get-NetTCPConnection -LocalPort %v).OwningProcess -Force", port)
 		cmd=exec.Command("Stop-Process", "-Id", command)
 	} else {
-		command := fmt.Sprintf("lsof -i tcp:%v | grep LISTEN | awk '{print $2}' | xargs kill -9", port)
+		command := fmt.Sprintf("kill $(lsof -t -i:%v)", port)
 		cmd=exec.Command("bash", "-c", command)
 
 		

@@ -85,7 +85,11 @@ export default {
         this.status=res.Msg
         this.msg=true  
       })
-    }
+    },
+    closeMsg(){
+      this.msg=false
+      this.status=""
+    },
   },
   mounted(){
     this.getConn()
