@@ -8,13 +8,13 @@
       <button class="mx-2" @click="closeMsg()"><UilTimesCircle size="17px" /></button>
     </span>
     <!--Kill port -->
-     <span class="absolute top-14 right-14 w-32">
-      <input class="rounded-lg w-1/2 p-2" v-model="port" type="number">
-      <button @click="killConn()" class="rounded-lg w-1/2 text-gray-300 p-2 bg-blue-600">kill</button>
+     <span class="absolute top-14 right-14 w-40 ">
+      <input class="rounded-lg w-4/6 p-2" v-model="port" type="number">
+      <button @click="killConn()" class="rounded-lg w-2/6 text-gray-100 p-2 bg-blue-600">kill</button>
     </span>
      <!--Dropdown-->
-    <div class="bg-gray-1000 w-full h-full p-8 text-gray-400 overflow-auto ">
-      <t-dropdown :text="protocol" class="mb-8 bg-gray-700 w-16 rounded-lg shadow-2xl absolute">
+    <div class="bg-blue-1000 w-full h-full p-8 text-gray-100 overflow-auto ">
+      <t-dropdown :text="protocol" class="mb-8 bg-blue-600 w-16 rounded-lg shadow-2xl absolute">
         <div class="py-1 rounded-md shadow-xs">
           <a
             v-for="(p,key) in protocols" :key="key"
