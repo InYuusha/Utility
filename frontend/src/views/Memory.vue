@@ -16,7 +16,7 @@
         <vc-donut size="150" v-for="(disk,key) in disks" :key="key" style="color:#8f9aa8" background="#0c123d" has-legend :auto-adjust-text-size="true" :thickness="6" :total="100" foreground="#696c80" :sections="[{value:disk.UsedPercent,color:'#0768fa',label:disk.Path}]">
          <span class="flex flex-col">
             <p style="color:#0768fa" class="tracking-wider font-extrabold">{{disk.UsedPercent}}<span class="text-sm align-top">%</span></p>
-            <p style="color:#0768fa" class="tracking-wider font-extrabold"> of{{byteToGb(disk.Total)}} GB</p>
+            <p style="color:#0768fa" class="tracking-wider font-extrabold"> of {{byteToGb(disk.Total)}} GB</p>
          </span>
         </vc-donut>
       </div>

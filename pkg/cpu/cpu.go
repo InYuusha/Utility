@@ -86,42 +86,7 @@ func (t *Info) KillP(p int32)Operation {
 	log.Println("Pid does not exists")
 	return Operation{Msg:"Process is already dead",Status:404}
 }
-// stop process
-func (t *Info) stopP(p int32) {
-	pids, err := process.Processes()
-	if err != nil {
-		log.Println(err)
-	}
-	for _, pid := range pids {
-		if pid.Pid == p {
-			err := pid.Suspend()
-			if err != nil {
-				log.Printf("Cannot Stop %v", err)
-			}else{
-				log.Printf("Stopped %d",p)
-			}
-		}
-	}
-	log.Println("Pid does not exists")
-}
-//continue process
-func (t *Info) contP(p int32) {
-	pids, err := process.Processes()
-	if err != nil {
-		log.Println(err)
-	}
-	for _, pid := range pids {
-		if pid.Pid == p {
-			err := pid.Resume()
-			if err != nil {
-				log.Printf("Cannot Resume %v", err)
-			}else{
-				log.Printf("Resumed %d",p)
-			}
-		}
-	}
-	log.Println("Pid does not exists")
-}
+
 
 // cpu info
 func(t*Info)GetCpuDetails() []cpu.InfoStat{

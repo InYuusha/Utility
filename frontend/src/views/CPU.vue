@@ -3,7 +3,7 @@
     
     <div >
 
-       <span v-if="msg" class="bg-purple-300 absolute top-11 p-4 flex flex-row text-gray-800 rounded-3xl w-60">
+       <span v-if="msg" class="bg-blue-500 text-gray-200 absolute top-11 p-4 flex flex-row  rounded-3xl w-60">
         {{status}}
         <button class="mx-2" @click="closeMsg()"><UilTimesCircle size="17px" /></button>
        </span>
@@ -50,9 +50,8 @@
               <td>{{p.Exe}}</td>
               <td>{{p.Background}}</td>
               <td>
-                <button class="bg-gray-700 px-2 mr-4 py-1 rounded-lg" @click="killP(p.Pid.pid)"><UilTimesCircle size="20px"/></button>
-                <button class="bg-gray-700 px-3 mr-4 py-1 rounded-lg" @click="stopP(p.Pid.pid)"><UilStopCircle size="20px"/></button>
-                <button class="bg-gray-700 px-3 py-1 rounded-lg" @click="contP(p.Pid.pid)"><UilPlay size="20px" /></button>
+                <button class="bg-gray-700 px-2  py-1 rounded-lg" @click="killP(p.Pid.pid)"><UilTimesCircle size="20px"/></button>
+
               </td>
             </tr>
           </tbody>
@@ -67,8 +66,7 @@
 // @ is an alias to /src
 import * as Wails from '@wailsapp/runtime';
 import { UilSync } from '@iconscout/vue-unicons'
-import { UilStopCircle } from '@iconscout/vue-unicons'
-import { UilPlay } from '@iconscout/vue-unicons'
+
 import { UilTimesCircle } from '@iconscout/vue-unicons'
 
 
@@ -77,8 +75,7 @@ export default {
   name: 'Home',
   components:{
     UilSync,
-    UilStopCircle,
-    UilPlay,
+  
     UilTimesCircle,
     
   },
@@ -107,16 +104,7 @@ export default {
           
       })
     },
-     stopP(p){
-      window.backend.Info.stopP(p).then(()=>{
-        this.getProcesses()
-      })
-    },
-     resumeP(p){
-      window.backend.Info.contP(p).then(()=>{
-        this.getProcesses()
-      })
-    },
+     
     getProcesses(){
       this.msg=false
       this.loading=true
