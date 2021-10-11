@@ -2,7 +2,7 @@
   
     <!--Percentage-->
   <div>
-    <div class="bg-gray-1000 overflow-auto w-full h-full p-8 text-gray-400">
+    <div class="bg-gray-1000 overflow-auto w-full h-full p-8 text-gray-200">
       
       <button class="bg-blue-900 absolute p-3  rounded-lg top-10 right-14" @click="allContainers()"><UilSync :class="loading?'animate-spin':null" size="30px" /></button>
 
@@ -18,7 +18,7 @@
           </tr>
         </thead>
         <tbody>
-            <tr v-for="(cont,key) in containers" :key="key">
+            <tr class="leading-10 text-lg" v-for="(cont,key) in containers" :key="key">
               <td>{{cont.containerID}}</td>
               <td>{{cont.name}}</td>
               <td>{{cont.image}}</td>
