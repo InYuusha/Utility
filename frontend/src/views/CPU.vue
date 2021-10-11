@@ -3,6 +3,11 @@
     
     <div >
 
+       <span v-if="msg" class="bg-purple-300 absolute top-11 p-4 flex flex-row text-gray-800 rounded-3xl w-60">
+        {{status}}
+        <button class="mx-2" @click="closeMsg()"><UilTimesCircle size="17px" /></button>
+       </span>
+
        <div class="flex flex-row h-2/6 mb-6">
          <!--Cpu Details-->
          <div class="w-3/6 bg-gray-1000 p-8 text-gray-400  overflow-auto">
@@ -66,6 +71,7 @@ import { UilStopCircle } from '@iconscout/vue-unicons'
 import { UilPlay } from '@iconscout/vue-unicons'
 import { UilTimesCircle } from '@iconscout/vue-unicons'
 
+
 export default {
 
   name: 'Home',
@@ -73,10 +79,13 @@ export default {
     UilSync,
     UilStopCircle,
     UilPlay,
-    UilTimesCircle
+    UilTimesCircle,
+    
   },
   data:()=>({
     sections:[0],
+    msg:false,
+    status:"",
     perc:"",
     loading:false,
     processList:[],
@@ -84,9 +93,18 @@ export default {
     fields:['vendorId','family','model','stepping','cores','coreId','physicalId','modelName','mhz','cachSize'],
   }),
   methods:{
+    closeMsg(){
+      this.msg=false
+      this.status=""
+    },
     killP(p){
-      window.backend.Info.KillP(p).then(()=>{
-        this.getProcesses()
+      window.backend.Info.KillP(p).then((res)=>{
+        if(res.Status==200){
+          this.getProcesses()
+        }
+        this.status=res.Msg
+        this.msg=true
+          
       })
     },
      stopP(p){
@@ -100,6 +118,7 @@ export default {
       })
     },
     getProcesses(){
+      this.msg=false
       this.loading=true
       this.list=[]
       window.backend.Info.GetProcesses()

@@ -17,6 +17,7 @@ type Info struct {
 	Background bool
 }
 
+
 //binding func
 func CPU() *Info {
 	return &Info{}
@@ -60,9 +61,12 @@ func (t *Info) GetProcesses() []Info {
 	return stats
 }
 // process operations
-
+type Operation struct{
+	Msg string
+	Status int32
+}
 // kill process
-func (t *Info) KillP(p int32) {
+func (t *Info) KillP(p int32)Operation {
 	pids, err := process.Processes()
 	if err != nil {
 		log.Println(err)
@@ -72,10 +76,15 @@ func (t *Info) KillP(p int32) {
 			err := pid.Kill()
 			if err != nil {
 				log.Printf("Cannot Kill %v", err)
+				return Operation{Msg:err.Error(),Status:400}
+			}else{
+				log.Printf("Killed %d",p)
+				return Operation{Msg:"Process killed successfully",Status:200}
 			}
 		}
 	}
 	log.Println("Pid does not exists")
+	return Operation{Msg:"Process is already dead",Status:404}
 }
 // stop process
 func (t *Info) stopP(p int32) {
@@ -88,6 +97,8 @@ func (t *Info) stopP(p int32) {
 			err := pid.Suspend()
 			if err != nil {
 				log.Printf("Cannot Stop %v", err)
+			}else{
+				log.Printf("Stopped %d",p)
 			}
 		}
 	}
@@ -104,6 +115,8 @@ func (t *Info) contP(p int32) {
 			err := pid.Resume()
 			if err != nil {
 				log.Printf("Cannot Resume %v", err)
+			}else{
+				log.Printf("Resumed %d",p)
 			}
 		}
 	}

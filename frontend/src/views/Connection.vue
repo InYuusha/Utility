@@ -2,6 +2,10 @@
   
   
   <div >
+    <span v-if="msg" class="bg-purple-300 absolute top-11 p-4 flex flex-row text-gray-800 rounded-3xl w-60">
+      {{status}}
+      <button class="mx-2" @click="closeMsg()"><UilTimesCircle size="17px" /></button>
+    </span>
      <!--Dropdown-->
     <div class="bg-gray-1000 w-full h-full p-8 text-gray-400 overflow-auto ">
       <t-dropdown :text="protocol" class="mb-8 bg-gray-700 w-16 rounded-lg shadow-2xl absolute">
@@ -31,8 +35,12 @@
             <td v-for="(attr,key) in attrs" :key="key" >
               <p v-if="attr!='localaddr'&& attr!='remoteaddr'">{{conn[attr]}}</p>
               <p v-else>{{conn[attr].ip}}:{{conn[attr].port}}</p>
-              </td>
+            </td>
+            <td>
+              <button class="bg-gray-700 px-2 mr-4 py-1 rounded-lg" @click="killConn(conn.localaddr.port)"><UilTimesCircle size="20px"/></button>
+            </td>
           </tr>
+      
         </tbody>
       </table>
     </div>
@@ -42,16 +50,20 @@
 
 <script>
 // @ is an alias to /src
-
+import { UilTimesCircle } from '@iconscout/vue-unicons'
 
 export default {
   name: 'Home',
-
+  components:{
+    UilTimesCircle
+  },
   data:()=>({
     conns:[],
     attrs:['fd','family','localaddr','remoteaddr','status','pid'],
     protocol:"tcp",
     protocols:['all','tcp','udp','inet'],
+    msg:false,
+    status:""
   }),
   methods:{
     getConn(kind="all"){
@@ -60,6 +72,15 @@ export default {
         this.conns=list
         this.protocol=kind
         })
+    },
+    killConn(port){
+      window.backend.Connection.killPort(port)
+      .then(res=>{
+        if(res.Status==200)
+          this.getConn()
+        this.status=res.Msg
+        this.msg=true  
+      })
     }
   },
   mounted(){
