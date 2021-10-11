@@ -1,7 +1,8 @@
 <template>
   
-    <!--Percentage-->
+  
   <div >
+     <!--Dropdown-->
     <div class="bg-gray-1000 w-full h-full p-8 text-gray-400 overflow-auto ">
       <t-dropdown :text="protocol" class="mb-8 bg-gray-700 w-16 rounded-lg shadow-2xl absolute">
         <div class="py-1 rounded-md shadow-xs">
@@ -18,6 +19,7 @@
         </div>
       </t-dropdown>
        <h3 class="text-center mb-6 text-xl font-extrabold">{{protocol}} connections</h3>
+        <!--Connections-->
       <table class="table-auto w-5/6">
         <thead>
           <tr>
@@ -26,7 +28,10 @@
         </thead>
         <tbody>
           <tr v-for="(conn,key) in conns" :key="key">
-            <td v-for="(attr,key) in attrs" :key="key" >{{conn[attr]}}</td>
+            <td v-for="(attr,key) in attrs" :key="key" >
+              <p v-if="attr!='localaddr'&& attr!='remoteaddr'">{{conn[attr]}}</p>
+              <p v-else>{{conn[attr].ip}}:{{conn[attr].port}}</p>
+              </td>
           </tr>
         </tbody>
       </table>

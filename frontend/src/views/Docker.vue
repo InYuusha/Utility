@@ -4,10 +4,8 @@
   <div>
     <div class="bg-gray-1000 overflow-auto w-full h-full p-8 text-gray-400">
       
-      <button @click="allContainers()">
-        <UilSync size="40px"></UilSync>
-      </button>
-      
+      <button class="bg-blue-900 absolute p-3  rounded-lg top-10 right-14" @click="allContainers()"><UilSync :class="loading?'animate-spin':null" size="30px" /></button>
+
       <h3 class="text-center mb-4 text-xl font-extrabold">Container Info</h3>
       <table class="table-auto w-full">
         <thead>
@@ -43,24 +41,22 @@ import { UilSync } from '@iconscout/vue-unicons'
 
 export default {
   name: 'Home',
-  component:{
+  components:{
     UilSync
   },
   data:()=>({
     containers:[],
-    activeID:[]
+    activeID:[],
+    loading:false
   }),
   methods:{
-    activeContainers(){
-      window.backend.Docker.GetAllDocker()
-      .then(list=>{
-      this.activeID = list
-    })
-    },
+ 
     allContainers(){
+      this.loading=true
       window.backend.Docker.GetAllDocker()
       .then(list=>{
       this.containers = list
+      this.loading=false
     })
     }
   

@@ -26,7 +26,7 @@
        <!--Processes-->
        <div class="overflow-auto h-4/6 backdrop-blur-lg">
           <div class="bg-gray-1000  full p-8 text-gray-400 mt-4 overflow-auto">
-         <button class="bg-blue-900 p-3 rounded-lg float-right " @click="getProcesses()"><UilSync size="30px" /></button>
+         <button  class="bg-blue-900 p-3 rounded-lg float-right " @click="getProcesses()"><UilSync :class="loading?'animate-spin':null" size="30px" /></button>
         <h3 class="text-center my-4 text-xl font-extrabold">Running Processes</h3>
         <table class="table-auto w-full">
           <thead>
@@ -35,6 +35,7 @@
               <th>cpu usage</th>
               <th>exe</th>
               <th>background</th>
+              <th>status</th>
             </tr>
           </thead>
           <tbody>
@@ -44,7 +45,9 @@
               <td>{{p.Exe}}</td>
               <td>{{p.Background}}</td>
               <td>
-                <button class="bg-gray-700 px-3 py-1 rounded-lg" @click="killP(p.Pid.pid)">Stop x</button>
+                <button class="bg-gray-700 px-2 mr-4 py-1 rounded-lg" @click="killP(p.Pid.pid)"><UilTimesCircle size="20px"/></button>
+                <button class="bg-gray-700 px-3 mr-4 py-1 rounded-lg" @click="stopP(p.Pid.pid)"><UilStopCircle size="20px"/></button>
+                <button class="bg-gray-700 px-3 py-1 rounded-lg" @click="contP(p.Pid.pid)"><UilPlay size="20px" /></button>
               </td>
             </tr>
           </tbody>
@@ -59,16 +62,23 @@
 // @ is an alias to /src
 import * as Wails from '@wailsapp/runtime';
 import { UilSync } from '@iconscout/vue-unicons'
+import { UilStopCircle } from '@iconscout/vue-unicons'
+import { UilPlay } from '@iconscout/vue-unicons'
+import { UilTimesCircle } from '@iconscout/vue-unicons'
 
 export default {
 
   name: 'Home',
   components:{
-    UilSync
+    UilSync,
+    UilStopCircle,
+    UilPlay,
+    UilTimesCircle
   },
   data:()=>({
     sections:[0],
     perc:"",
+    loading:false,
     processList:[],
     cpuDetails:[],
     fields:['vendorId','family','model','stepping','cores','coreId','physicalId','modelName','mhz','cachSize'],
@@ -79,10 +89,24 @@ export default {
         this.getProcesses()
       })
     },
+     stopP(p){
+      window.backend.Info.stopP(p).then(()=>{
+        this.getProcesses()
+      })
+    },
+     resumeP(p){
+      window.backend.Info.contP(p).then(()=>{
+        this.getProcesses()
+      })
+    },
     getProcesses(){
+      this.loading=true
       this.list=[]
       window.backend.Info.GetProcesses()
-      .then(list=>this.processList = list)
+      .then(list=>{
+        this.processList = list
+        this.loading=false
+        })
     },
     getCpuDetails(){
       window.backend.Info.GetCpuDetails()

@@ -30,7 +30,7 @@ func (t *Info) GetCPU() int {
 	}
 	return int(per[0])
 }
-
+// running processes
 func (t *Info) GetProcesses() []Info {
 
 	stats := []Info{}
@@ -59,7 +59,9 @@ func (t *Info) GetProcesses() []Info {
 	}
 	return stats
 }
+// process operations
 
+// kill process
 func (t *Info) KillP(p int32) {
 	pids, err := process.Processes()
 	if err != nil {
@@ -75,7 +77,40 @@ func (t *Info) KillP(p int32) {
 	}
 	log.Println("Pid does not exists")
 }
+// stop process
+func (t *Info) stopP(p int32) {
+	pids, err := process.Processes()
+	if err != nil {
+		log.Println(err)
+	}
+	for _, pid := range pids {
+		if pid.Pid == p {
+			err := pid.Suspend()
+			if err != nil {
+				log.Printf("Cannot Stop %v", err)
+			}
+		}
+	}
+	log.Println("Pid does not exists")
+}
+//continue process
+func (t *Info) contP(p int32) {
+	pids, err := process.Processes()
+	if err != nil {
+		log.Println(err)
+	}
+	for _, pid := range pids {
+		if pid.Pid == p {
+			err := pid.Resume()
+			if err != nil {
+				log.Printf("Cannot Resume %v", err)
+			}
+		}
+	}
+	log.Println("Pid does not exists")
+}
 
+// cpu info
 func(t*Info)GetCpuDetails() []cpu.InfoStat{
 	info, err := cpu.Info()
 	if err != nil {
