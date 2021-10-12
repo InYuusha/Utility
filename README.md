@@ -28,10 +28,11 @@
 </p>
 <br><br>
 <h3>How to Install</h3>
-<ol>
 
+
+<ol>
    <li>
-      <a href="https://raw.githubusercontent.com/InYuusha/Utility/master/Screenshot%20from%202021-10-12%2005-52-23.png">Download executable for linux</a>
+      <a href="https://drive.google.com/file/d/1nMo5y1UWeOCeAwDS3Bv_Maj-zA0Krhdg/view?usp=sharing">Download executable for linux</a>
    </li>
       <li>
       <p>Right click and open properties</p>
