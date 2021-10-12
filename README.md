@@ -29,11 +29,12 @@
 <br><br>
 <h3>How to Install</h3>
 <ol>
-   <li>
-      <p>Right click and open properties</p>
-   </li>
+
    <li>
       <a href="https://raw.githubusercontent.com/InYuusha/Utility/master/Screenshot%20from%202021-10-12%2005-52-23.png">Download executable for linux</a>
+   </li>
+      <li>
+      <p>Right click and open properties</p>
    </li>
    <li>
       <p>Make sure the "Allow executinng file as program is checked"</p>
