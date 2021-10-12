@@ -33,16 +33,19 @@
       <a href="https://raw.githubusercontent.com/InYuusha/Utility/master/Screenshot%20from%202021-10-12%2005-52-23.png">Download executable for linux</a>
    </li>
    <li>
-      <img src="https://raw.githubusercontent.com/InYuusha/Utility/master/Screenshot%20from%202021-10-12%2005-55-47.png"/>
-      <br>
       <p>Make sure the "Allow executinng file as program is checked"</p>
+      <br>
+      <img src="https://raw.githubusercontent.com/InYuusha/Utility/master/Screenshot%20from%202021-10-12%2005-55-47.png"/>
+      
+     
    </li>
    <li>
-      <img src="https://raw.githubusercontent.com/InYuusha/Utility/master/Screenshot%20from%202021-10-12%2005-52-23.png"/>
-      <br>
       <p>Make sure the default is archive manager"</p>
+      <br>
+      <img src="https://raw.githubusercontent.com/InYuusha/Utility/master/Screenshot%20from%202021-10-12%2005-52-23.png"/>
+     
    </li>
 </ol>
-<a href="https://drive.google.com/file/d/1nMo5y1UWeOCeAwDS3Bv_Maj-zA0Krhdg/view?usp=sharing">Download for linux</a>
+
 
 
