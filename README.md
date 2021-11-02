@@ -1,11 +1,13 @@
 # System Utility desktop application using Wails, Golang, Vuejs
 
 <h3><b>Features </b></h3>
-<h4>Realtime Cpu and Memory Usage Usage</h4>
-<h4>Disk Usage</h4>
-<h4>List and terminate Running Processes</h4>
-<h4>List Docker containers</h4>
-<h4>Network Connections(tcp,udp,etc)</h4>
+<ul>
+   <li>Realtime Cpu and Memory Usage Usage</li>
+   <li>Disk Usage</li>
+   <li>List and terminate Running Processes</li>
+   <li>List Docker containers</li>
+   <li>Network Connections(tcp,udp,etc)</li>
+</ul>
 
 <p align="center">
    <img src="https://raw.githubusercontent.com/InYuusha/Utility/master/Screenshot%20from%202021-10-12%2005-29-33.png" width="600px">
