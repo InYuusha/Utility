@@ -2,12 +2,13 @@
 
 <h3><b>Features </b></h3>
 <ul>
-   <li>Realtime Cpu and Memory Usage Usage</li>
+   <li>Realtime Cpu and MemoryUsage</li>
    <li>Disk Usage</li>
    <li>List and terminate Running Processes</li>
    <li>List Docker containers</li>
    <li>Network Connections(tcp,udp,etc)</li>
 </ul>
+<br><br>
 
 <p align="center">
    <img src="https://raw.githubusercontent.com/InYuusha/Utility/master/Screenshot%20from%202021-10-12%2005-29-33.png" width="600px">
