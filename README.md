@@ -45,7 +45,7 @@
      
    </li>
    <li>
-      <p>Make sure the default is archive manager"</p>
+      <p>Make sure the default is "Archive manager"</p>
       <br>
       <img src="https://raw.githubusercontent.com/InYuusha/Utility/master/Screenshot%20from%202021-10-12%2005-52-23.png"/>
      
